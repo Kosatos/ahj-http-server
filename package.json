@@ -1,0 +1,28 @@
+{
+  "name": "ahj-http-server",
+  "version": "1.0.0",
+  "description": "[![Build status](https://ci.appveyor.com/api/projects/status/y8y03byvycac1kd0?svg=true)](https://ci.appveyor.com/project/Kosatos/ahj-trello)",
+  "main": "index.js",
+  "scripts": {
+    "start": "forever index.js",
+    "watch": "forever -w index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Kosatos/ahj-http-server.git"
+  },
+  "author": "Konstantin Muzyka",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Kosatos/ahj-http-server/issues"
+  },
+  "homepage": "https://github.com/Kosatos/ahj-http-server#readme",
+  "dependencies": {
+    "forever": "^4.0.3",
+    "koa": "^2.13.4",
+    "koa-body": "^5.0.0",
+    "koa-cors": "0.0.16",
+    "koa-static": "^5.0.0",
+    "uuid": "^8.3.2"
+  }
+}
