@@ -36,8 +36,8 @@ app.use(
 );
 
 function getFullTicket(id) {
-	ticket = appData.tickets.find((tckt) => tckt.id === id);
-	return ticket.description;
+	const ticket = appData.tickets.find((tckt) => tckt.id == id);
+	return ticket;
 }
 
 function createTicket(requestBody) {
@@ -56,8 +56,8 @@ function createTicket(requestBody) {
 
 function deleteTicket(id) {
 	try {
-		appData = appData.filter((ticket) => ticket.id !== id);
-		return true;
+		appData.tickets = appData.tickets.filter((ticket) => ticket.id !== id);
+		return { status: true, id: id };
 	} catch (err) {
 		return err.message;
 	}
@@ -87,6 +87,7 @@ app.use(async (ctx) => {
 				return;
 			case 'ticketById':
 				ctx.response.body = getFullTicket(id);
+				return;
 			default:
 				ctx.response.status = 404;
 				return;
@@ -99,7 +100,7 @@ app.use(async (ctx) => {
 				ctx.response.body = createTicket(ctx.request.body);
 				return;
 			case 'editTicket':
-				ctx.response.body = editTicket(ctx.response.body);
+				ctx.response.body = editTicket(ctx.request.body);
 				return;
 			case 'deleteTicket':
 				ctx.response.body = deleteTicket(id);
